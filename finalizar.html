@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Finalizar Compra</title>
+  <link rel="icon" href="pikachu.jpg" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdf6ec;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #007f8c;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.6rem;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+    }
+
+    header a.logo {
+      color: white;
+      text-decoration: none;
+    }
+
+    .checkout-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .checkout-box {
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .checkout-box h2 {
+      color: #007f8c;
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+    }
+
+    .checkout-box p {
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .pagamento-form label {
+      display: block;
+      background: #e6f7f9;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 12px;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .pagamento-form input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    .pagamento-form button {
+      width: 100%;
+      padding: 14px;
+      background-color: #007f8c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.1s ease;
+    }
+
+    .pagamento-form button:hover {
+      background-color: #006f7a;
+    }
+
+    .pagamento-form button:active {
+      transform: scale(0.97);
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      background-color: #e6f7f9;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="Livros.html" class="logo">📚 Livraria do Saber</a>
+  </header>
+
+  <div class="checkout-container">
+    <div class="checkout-box">
+      <h2>Finalizar Compra</h2>
+      <p>Escolha o método de pagamento desejado abaixo:</p>
+
+      <form class="pagamento-form" onsubmit="event.preventDefault(); window.location.href='confirmado.html';">
+        <label><input type="radio" name="pagamento" required> Cartão de Crédito</label>
+        <label><input type="radio" name="pagamento"> Boleto Bancário</label>
+        <label><input type="radio" name="pagamento"> PIX</label>
+
+        <button type="submit">Confirmar Pedido</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Livraria do Saber — Todos os direitos reservados.
+  </footer>
+</body>
+</html>
