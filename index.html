@@ -1,168 +1,106 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Livraria do Saber</title>
-  <link rel="icon" href="pikachu.jpg" type="image/png" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="pikachu.jpg" type="image/png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <a href="index.html" class="logo">📚 Livraria do Saber</a>
-  </header>
+<header>
+  <a href="index.html" class="logo">📚 Livraria do Saber</a>
+</header>
 
-  <section class="banner">
-    <h1>Bem-vindo à Livraria do Saber!</h1>
-    <p>Explore os melhores livros com apenas um clique.</p>
-  </section>
+<section class="banner">
+  <h1>Bem-vindo à Livraria do Saber!</h1>
+  <p>Explore os melhores livros com apenas um clique.</p>
+</section>
 
-  <div class="filter-bar" style="padding: 0 30px 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; background: #e6f7f9; border-radius: 10px; margin: 20px 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 15px 30px;">
-    <label for="category" style="font-weight: bold; color: #007f8c;">Categoria:</label>
-    <select id="category" onchange="filterCategory()" style="padding: 8px 12px; border-radius: 6px; border: 1px solid #ccc;">
-      <option value="all">Todos</option>
-      <option value="classico">Clássico</option>
-      <option value="infantil">Infantil</option>
-      <option value="fantasia">Fantasia</option>
-      <option value="distopia">Distopia</option>
-      <option value="romance">Romance</option>
-    </select>
-  
-    <label for="priceOrder" style="font-weight: bold; color: #007f8c;">Preço:</label>
-    <select id="priceOrder" onchange="orderByPrice()" style="padding: 8px 12px; border-radius: 6px; border: 1px solid #ccc;">
-      <option value="none">Nenhum</option>
-      <option value="asc">Menor Preço</option>
-      <option value="desc">Maior Preço</option>
-    </select>
-  
-    <label for="search" style="font-weight: bold; color: #007f8c;">Buscar:</label>
-    <input type="text" id="search" onkeyup="searchBooks()" placeholder="Digite o título" style="padding: 8px 12px; border-radius: 6px; border: 1px solid #ccc; width: 200px;">
+<div class="filter-bar" style="padding: 0 30px 20px; display: flex; gap: 20px; align-items: center; flex-wrap: wrap; background: #e6f7f9; border-radius: 10px; margin: 20px 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); padding: 15px 30px;">
+  <label for="category" style="font-weight: bold; color: #007f8c;">Categoria:</label>
+  <select id="category" onchange="filterCategory()" style="padding: 8px 12px; border-radius: 6px; border: 1px solid #ccc;">
+    <option value="all">Todos</option>
+    <option value="classico">Clássico</option>
+    <option value="infantil">Infantil</option>
+    <option value="fantasia">Fantasia</option>
+    <option value="distopia">Distopia</option>
+    <option value="romance">Romance</option>
+  </select>
+
+  <label for="priceOrder" style="font-weight: bold; color: #007f8c;">Preço:</label>
+  <select id="priceOrder" onchange="orderByPrice()" style="padding: 8px 12px; border-radius: 6px; border: 1px solid #ccc;">
+    <option value="none">Nenhum</option>
+    <option value="asc">Menor Preço</option>
+    <option value="desc">Maior Preço</option>
+  </select>
+
+  <label for="search" style="font-weight: bold; color: #007f8c;">Buscar:</label>
+  <input type="text" id="search" onkeyup="searchBooks()" placeholder="Digite o título" style="padding: 8px 12px; border-radius: 6px; border: 1px solid #ccc; width: 200px;">
+</div>
+
+<div class="products" id="productContainer">
+  <div class="product" data-category="classico">
+    <img src="img/dom_casmurro.jpg" alt="Dom Casmurro">
+    <h3>Dom Casmurro</h3>
+    <p>R$ 30,00</p>
+    <button onclick="addToCart('Dom Casmurro', 30)">Adicionar</button>
+    <div class="description">Romance psicológico de Machado de Assis que explora a dúvida de Bentinho sobre Capitu.</div>
   </div>
-
-  <div class="products">
-    <div class="product" data-category="classico">
-      <img src="img/dom_casmurro.jpg" alt="Dom Casmurro" />
-      <h3>Dom Casmurro</h3>
-      <p>R$ 30,00</p>
-      <button onclick="addToCart('Dom Casmurro', 30)">Adicionar</button>
-      <div class="description">Romance psicológico de Machado de Assis que explora a dúvida de Bentinho sobre Capitu.</div>
-    </div>
-    <div class="product" data-category="infantil">
-      <img src="img/pequeno_principe.jpg" alt="O Pequeno Príncipe" />
-      <h3>O Pequeno Príncipe</h3>
-      <p>R$ 45,00</p>
-      <button onclick="addToCart('O Pequeno Príncipe', 45)">Adicionar</button>
-      <div class="description">Uma fábula poética sobre amor, amizade e a importância das coisas simples da vida.</div>
-    </div>
-    <div class="product" data-category="fantasia">
-      <img src="img/harry_potter.jpg" alt="Harry Potter" />
-      <h3>Harry Potter</h3>
-      <p>R$ 60,00</p>
-      <button onclick="addToCart('Harry Potter', 60)">Adicionar</button>
-      <div class="description">A jornada mágica de um jovem bruxo na escola de magia de Hogwarts.</div>
-    </div>
-    <div class="product" data-category="distopia">
-      <img src="img/revolucao_bichos.jpg" alt="A Revolução dos Bichos" />
-      <h3>A Revolução dos Bichos</h3>
-      <p>R$ 25,00</p>
-      <button onclick="addToCart('A Revolução dos Bichos', 25)">Adicionar</button>
-      <div class="description">Uma sátira política sobre a corrupção do poder, escrita por George Orwell.</div>
-    </div>
-    <div class="product" data-category="distopia">
-      <img src="img/1984.jpg" alt="1984" />
-      <h3>1984</h3>
-      <p>R$ 35,00</p>
-      <button onclick="addToCart('1984', 35)">Adicionar</button>
-      <div class="description">Romance distópico sobre vigilância, controle social e opressão.</div>
-    </div>
-    <div class="product" data-category="fantasia">
-      <img src="img/o_hobbit.jpg" alt="O Hobbit" />
-      <h3>O Hobbit</h3>
-      <p>R$ 55,00</p>
-      <button onclick="addToCart('O Hobbit', 55)">Adicionar</button>
-      <div class="description">Bilbo Bolseiro embarca em uma jornada épica por terras encantadas.</div>
-    </div>
-    <div class="product" data-category="classico">
-      <img src="img/o_alquimista.jpg" alt="O Alquimista" />
-      <h3>O Alquimista</h3>
-      <p>R$ 70,00</p>
-      <button onclick="addToCart('O Alquimista', 70)">Adicionar</button>
-      <div class="description">Um jovem pastor parte em busca de seu tesouro pessoal e aprende grandes lições.</div>
-    </div>
-    <div class="product" data-category="classico">
-      <img src="img/capitaes_areia.jpg" alt="Capitães da Areia" />
-      <h3>Capitães da Areia</h3>
-      <p>R$ 20,00</p>
-      <button onclick="addToCart('Capitães da Areia', 20)">Adicionar</button>
-      <div class="description">Grupo de meninos de rua de Salvador vive entre liberdade e exclusão social.</div>
-    </div>
-    <div class="product" data-category="fantasia">
-      <img src="img/senhor_aneis.jpg" alt="O Senhor dos Anéis" />
-      <h3>O Senhor dos Anéis</h3>
-      <p>R$ 90,00</p>
-      <button onclick="addToCart('O Senhor dos Anéis', 90)">Adicionar</button>
-      <div class="description">A saga épica de Frodo e seus amigos contra as forças das trevas.</div>
-    </div>
-    <div class="product" data-category="romance">
-      <img src="img/culpa_estrelas.jpg" alt="A Culpa é das Estrelas" />
-      <h3>A Culpa é das Estrelas</h3>
-      <p>R$ 40,00</p>
-      <button onclick="addToCart('A Culpa é das Estrelas', 40)">Adicionar</button>
-      <div class="description">Dois adolescentes lidam com o amor e a doença em uma história tocante.</div>
-    </div>
+  <div class="product" data-category="infantil">
+    <img src="img/pequeno_principe.jpg" alt="O Pequeno Príncipe">
+    <h3>O Pequeno Príncipe</h3>
+    <p>R$ 45,00</p>
+    <button onclick="addToCart('O Pequeno Príncipe', 45)">Adicionar</button>
+    <div class="description">Fábula poética sobre amizade, amor e a essência da vida.</div>
   </div>
-  
-  <script>
-    function filterCategory() {
-      const selected = document.getElementById('category').value;
-      const products = document.querySelectorAll('.product');
-      products.forEach(product => {
-        if (selected === 'all' || product.dataset.category === selected) {
-          product.style.display = 'block';
-        } else {
-          product.style.display = 'none';
-        }
-      });
-      searchBooks();
-    }
-    
-    function orderByPrice() {
-      const order = document.getElementById('priceOrder').value;
-      const container = document.getElementById('productContainer');
-      const items = Array.from(container.getElementsByClassName('product'));
-    
-      if (order === 'asc' || order === 'desc') {
-        items.sort((a, b) => {
-          const priceA = parseFloat(a.querySelector('p').innerText.replace('R$', '').replace(',', '.'));
-          const priceB = parseFloat(b.querySelector('p').innerText.replace('R$', '').replace(',', '.'));
-          return order === 'asc' ? priceA - priceB : priceB - priceA;
-        });
-        container.innerHTML = '';
-        items.forEach(el => container.appendChild(el));
-      }
-    }
-    
-    function searchBooks() {
-      const term = document.getElementById('search').value.toLowerCase();
-      const products = document.querySelectorAll('.product');
-      products.forEach(product => {
-        const title = product.querySelector('h3').innerText.toLowerCase();
-        const category = document.getElementById('category').value;
-        const matchesSearch = title.includes(term);
-        const matchesCategory = category === 'all' || product.dataset.category === category;
-        product.style.display = matchesSearch && matchesCategory ? 'block' : 'none';
-      });
-    }
-    </script>
-    
-    <style>
-    .product img {
-      width: 100%;
-      max-height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-    </style>
+  <div class="product" data-category="fantasia">
+    <img src="img/harry_potter.jpg" alt="Harry Potter">
+    <h3>Harry Potter</h3>
+    <p>R$ 60,00</p>
+    <button onclick="addToCart('Harry Potter', 60)">Adicionar</button>
+    <div class="description">A jornada mágica de um jovem bruxo na escola de magia de Hogwarts.</div>
+  </div>
+  <div class="product" data-category="distopia">
+    <img src="img/1984.jpg" alt="1984">
+    <h3>1984</h3>
+    <p>R$ 35,00</p>
+    <button onclick="addToCart('1984', 35)">Adicionar</button>
+    <div class="description">Romance distópico sobre vigilância, controle social e opressão.</div>
+  </div>
+  <div class="product" data-category="romance">
+    <img src="img/culpa_estrelas.jpg" alt="A Culpa é das Estrelas">
+    <h3>A Culpa é das Estrelas</h3>
+    <p>R$ 40,00</p>
+    <button onclick="addToCart('A Culpa é das Estrelas', 40)">Adicionar</button>
+    <div class="description">Dois adolescentes lidam com o amor e a doença em uma história tocante.</div>
+  </div>
+</div>
+
+<!-- Carrinho flutuante -->
+<div class="floating-cart" id="cart-icon" onclick="toggleCart()">
+  🛒
+  <span class="cart-count" id="cart-count">0</span>
+</div>
+
+<div class="cart-panel" id="cart-panel">
+  <h3>🛒 Seu Carrinho</h3>
+  <div class="cart-items" id="cart-items">
+    <p>O carrinho está vazio.</p>
+  </div>
+  <div class="cart-buttons">
+    <button class="continue-btn" onclick="toggleCart()">Continuar Comprando</button>
+    <button class="checkout-btn" onclick="window.location.href='finalizar.html'">Finalizar Compra</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+function toggleCart() {
+  document.getElementById('cart-panel').classList.toggle('open');
+}
+</script>
+
 </body>
 </html>
+
