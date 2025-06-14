@@ -1,6 +1,5 @@
 let cart = [];
 
-// Restaura carrinho salvo (se houver)
 window.addEventListener('DOMContentLoaded', () => {
   const savedCart = sessionStorage.getItem('cart');
   if (savedCart) {
@@ -19,7 +18,7 @@ function addToCart(item, price) {
   }
   updateCart();
 
-  // animação no carrinho
+  // animação no ícone do carrinho
   const cartIcon = document.getElementById('cart-icon');
   cartIcon.classList.add('bounce');
   setTimeout(() => cartIcon.classList.remove('bounce'), 400);
@@ -42,8 +41,4 @@ function updateCart() {
       Total: R$ ${(item.quantity * item.price).toFixed(2)}
     </div><hr/>
   `).join('');
-}
-
-function toggleCart() {
-  document.getElementById('cart-panel').classList.toggle('open');
 }
